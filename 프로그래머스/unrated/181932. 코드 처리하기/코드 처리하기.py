@@ -11,21 +11,19 @@
 # 그리고 마지막 조건으로 append를 담아주는 ret 이
 # 빈 문자열이면 "EMPTY"를 리턴해준다.
 def solution(code):
-    mode = True
-    ret = ''
-    for idx, val in enumerate(code):
-        if mode:
-            # mode = 0
-            if val != '1' and idx % 2 == 0:
-                ret = ret + val
-            elif val == '1':
-                mode = False         
-        else:
-            # mode = 1
-            if val != '1' and idx % 2 != 0:
-                ret = ret + val
-            elif val == '1':
-                mode = True
-    if len(ret) == 0:
-        return 'EMPTY'            
-    return ret
+    answer = ''
+    mode = 0
+    for i in range(len(code)):
+        if code[i] == '1':
+            if mode == 0:
+                mode = 1
+            else:
+                mode = 0
+        elif mode == 0 and i % 2 == 0:
+            answer += code[i]
+        elif mode == 1 and i % 2 == 1:
+            answer += code[i]
+    if len(answer) == 0:
+        return 'EMPTY'
+
+    return answer
