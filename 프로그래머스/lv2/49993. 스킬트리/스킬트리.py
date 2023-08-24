@@ -8,8 +8,11 @@ def solution(skill, skill_trees):
     for i in skill_trees:
         s = ''
         for j in i:
-            if j in skill:  # 선행스킬에 포함된다면
+            # 선행스킬에 포함된다면
+            if j in skill:  
                 s += j
-        if skill[:len(s)] == s:  # skill의 앞부터 s의 길이만큼 s와 같다면 
-            answer += 1  # 가능한 스킬트리
+        # skill의 앞부터 s의 길이만큼 s와 같다면
+        if skill[:len(s)] == s:  
+            # 가능한 스킬트리 카운트시작
+            answer += 1  
     return answer
